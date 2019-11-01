@@ -31,7 +31,7 @@ const getId = url => {
   return tokens[tokens.length - 2];
 }
 
-const Character = ({ name, gender, height, mass, url, history }) => {
+export const Character = ({ name, gender, url, history }) => {
   const handleClick = (event) => {
     event.preventDefault();
     history.push(`/characters/${getId(url)}`);

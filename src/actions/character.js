@@ -4,11 +4,11 @@ import { STAR_WARS_CHARACTERS_ENDPOINT } from '../constants/api';
 export const FETCH_CHARACTER_START = 'FETCH_CHARACTER_START';
 export const FETCH_CHARACTER_SUCCESS = 'FETCH_CHARACTER_SUCCESS';
 
-const fetchCharacterStart = () => ({
+export const fetchCharacterStart = () => ({
   type: FETCH_CHARACTER_START
 });
 
-const fetchCharacterSuccess = (character) => ({
+export const fetchCharacterSuccess = (character) => ({
   type: FETCH_CHARACTER_SUCCESS,
   payload: { character }
 });

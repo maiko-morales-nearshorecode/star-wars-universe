@@ -1,6 +1,6 @@
 import { FETCH_CHARACTER_SUCCESS, FETCH_CHARACTER_START } from "../actions/character";
 
-const initialState = {
+export const initialState = {
   isLoading: false
 };
 

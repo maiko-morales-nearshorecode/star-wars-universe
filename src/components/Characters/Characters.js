@@ -22,7 +22,7 @@ const Characters = () => {
       {characters.isLoading && <Icon name="spinner" size="large" loading />}
       {!characters.isLoading && characters.items.length > 0 &&
         <>
-          <List divided relaxed selection verticalAlign="middle">
+          <List divided relaxed selection size="huge" verticalAlign="middle">
             {characters.items.map(character => (
               <Character key={character.url} {...character} />
             ))}

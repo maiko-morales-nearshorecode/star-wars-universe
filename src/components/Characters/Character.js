@@ -1,5 +1,6 @@
 import React from 'react';
 import { List, Icon } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
 
 const GENDER = {
   MALE: 'male',
@@ -25,15 +26,24 @@ const Avatar = ({ gender }) => {
   return <Icon name={iconName} />;
 };
 
-const Character = ({ name, gender, height, mass }) => (
-  <List.Item>
-    <List.Content>
-      <List.Header>{name} <Avatar gender={gender} /></List.Header>
-      <span>{height} cm</span>
-      <span> | </span>
-      <span>{mass} kg</span>
-    </List.Content>
-  </List.Item>
-);
+const getId = url => {
+  const tokens = url.split('/');
+  return tokens[tokens.length - 2];
+}
 
-export default Character;
+const Character = ({ name, gender, height, mass, url, history }) => {
+  const handleClick = (event) => {
+    event.preventDefault();
+    history.push(`/characters/${getId(url)}`);
+  };
+
+  return (
+      <List.Item onClick={handleClick}>
+        <List.Content>
+          <List.Header>{name} <Avatar gender={gender} /></List.Header>
+        </List.Content>
+      </List.Item>
+  );
+}
+
+export default withRouter(Character);

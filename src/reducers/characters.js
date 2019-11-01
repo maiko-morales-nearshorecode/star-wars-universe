@@ -10,7 +10,12 @@ const characters = (state = initialState, { type, payload }) => {
     case FETCH_CHARACTERS_START:
       return { items: [], isLoading: true };
     case FETCH_CHARACTERS_SUCCESS:
-      return { items: payload.characters, isLoading: false };
+      return {
+        items: payload.characters,
+        isLoading: false,
+        page: payload.page,
+        totalPages: Math.ceil(payload.count / 10)
+      };
     default:
       return state;
   }

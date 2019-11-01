@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios from 'axios';
+import qs from 'qs';
 import { STAR_WARS_CHARACTERS_ENDPOINT } from '../constants/api';
 
 export const FETCH_CHARACTERS_START = 'FETCH_CHARACTERS_START';
@@ -8,17 +9,20 @@ const fetchCharactersStart = () => ({
   type: FETCH_CHARACTERS_START
 });
 
-const fetchCharactersSuccess = (characters) => ({
+const fetchCharactersSuccess = (characters, page, count) => ({
   type: FETCH_CHARACTERS_SUCCESS,
-  payload: { characters }
+  payload: { characters, page, count }
 });
 
-export const fetchCharacters = () => async (dispatch) => {
+export const fetchCharacters = (page = 1) => async (dispatch) => {
   dispatch(fetchCharactersStart());
+  const query = { page };
   try {
-    const res = await axios.get(STAR_WARS_CHARACTERS_ENDPOINT);
+    const url = `${STAR_WARS_CHARACTERS_ENDPOINT}?${qs.stringify(query)}`;
+    const res = await axios.get(url);
     const characters = res.data.results;
-    dispatch(fetchCharactersSuccess(characters));
+    const count = res.data.count;
+    dispatch(fetchCharactersSuccess(characters, page, count));
   } catch (error) {
     console.error(error);
   }

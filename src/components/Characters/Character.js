@@ -3,7 +3,8 @@ import { List, Icon } from 'semantic-ui-react';
 
 const GENDER = {
   MALE: 'male',
-  FEMALE: 'female'
+  FEMALE: 'female',
+  NA: 'n/a'
 };
 
 const Avatar = ({ gender }) => {
@@ -13,10 +14,13 @@ const Avatar = ({ gender }) => {
       iconName = "man";
       break;
     case GENDER.FEMALE:
-        iconName = "woman";
-        break;
-      default:
-        iconName = "android";
+      iconName = "woman";
+      break;
+    case GENDER.NA:
+      iconName = "android";
+      break;
+    default:
+      return null;
   }
   return <Icon name={iconName} />;
 };
@@ -24,10 +28,10 @@ const Avatar = ({ gender }) => {
 const Character = ({ name, gender, height, mass }) => (
   <List.Item>
     <List.Content>
-    <List.Header>{name} <Avatar gender={gender} /></List.Header>
-    <span>{height} cm</span>
-    <span> | </span>
-    <span>{mass} kg</span>
+      <List.Header>{name} <Avatar gender={gender} /></List.Header>
+      <span>{height} cm</span>
+      <span> | </span>
+      <span>{mass} kg</span>
     </List.Content>
   </List.Item>
 );

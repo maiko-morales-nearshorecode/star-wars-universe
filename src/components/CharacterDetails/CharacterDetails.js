@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Icon, Card } from 'semantic-ui-react';
-import { useParams } from 'react-router-dom';
+import { Header, Icon, Card } from 'semantic-ui-react';
+import { Link, useParams } from 'react-router-dom';
 import { fetchCharacter } from '../../actions/character';
 import CharacterEpisodes from './CharacterEpisodes';
 
@@ -17,8 +17,13 @@ const CharacterDetails = () => {
   let unknownBirthYear = character.birth_year === "unknown";
 
   return (
-    <Grid.Column>
-      <h2>Details</h2>
+    <>
+      <Header as="h2">
+          <Link to="/">
+            <Icon name="arrow left"/>
+          </Link>
+        Details
+      </Header>
       {character.isLoading && <Icon name="spinner" size="large" loading />}
       {!character.isLoading && id && (
         <Card raised fluid>
@@ -46,7 +51,7 @@ const CharacterDetails = () => {
           </Card.Content>
         </Card>
       )}
-    </Grid.Column>
+    </>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, List, Icon, Pagination } from 'semantic-ui-react';
+import { List, Icon, Pagination, Header } from 'semantic-ui-react';
 import { fetchCharacters } from '../../actions/characters';
 import Character from './Character';
 
@@ -17,8 +17,8 @@ const Characters = () => {
   };
 
   return (
-    <Grid.Column>
-      <h2>Characters</h2>
+    <>
+      <Header as="h2">Characters</Header>
       {characters.isLoading && <Icon name="spinner" size="large" loading />}
       {!characters.isLoading && characters.items.length > 0 &&
         <>
@@ -34,7 +34,7 @@ const Characters = () => {
           />
         </>
       }
-    </Grid.Column>
+    </>
   );
 };
 

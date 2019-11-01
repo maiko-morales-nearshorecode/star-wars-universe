@@ -18,7 +18,7 @@ const Characters = () => {
 
   return (
     <Grid.Column>
-      <h1>Characters</h1>
+      <h2>Characters</h2>
       {characters.isLoading && <Icon name="spinner" size="large" loading />}
       {!characters.isLoading && characters.items.length > 0 &&
         <>

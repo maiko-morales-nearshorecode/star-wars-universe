@@ -18,7 +18,7 @@ const CharacterDetails = () => {
 
   return (
     <Grid.Column>
-      <h1>Details</h1>
+      <h2>Details</h2>
       {character.isLoading && <Icon name="spinner" size="large" loading />}
       {!character.isLoading && id && (
         <Card raised fluid>
